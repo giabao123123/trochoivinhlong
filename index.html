@@ -1,0 +1,1491 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://giabao123123.github.io/trochoi/trochoi.css"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="./logo tro choi vinh long/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="./logo tro choi vinh long/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="./logo tro choi vinh long/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="./logo tro choi vinh long/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="./logo tro choi vinh long/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="./logo tro choi vinh long/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="./logo tro choi vinh long/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="./logo tro choi vinh long/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./logo tro choi vinh long/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="./logo tro choi vinh long/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./logo tro choi vinh long/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="./logo tro choi vinh long/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./logo tro choi vinh long/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./logo tro choi vinh long/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="./logo tro choi vinh long/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <title>Game Vĩnh Long</title>
+  </head>
+  <body class="w3-light-grey">
+    <audio id="startSound" loop>
+      <source src="./amthanh/choigame.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="gameMusic" loop>
+      <source src="./amthanh/choigame.mp3" type="audio/mpeg" />
+    </audio>
+    <div id="main-screen">
+      <audio id="lobbyMusic" loop>
+        <source src="./amthanh/sanhcho.mp3" type="audio/mpeg" />
+      </audio>
+      <div class="header w3-content w3-center neon-box2" id="chicki">
+        <button
+          id="sound-btn"
+          class="neon-btn neon-box1 w3-left buu"
+          style="padding: 1%"
+          onclick="toggleSound()"
+        >
+          🔊NHẠC: BẬT
+        </button>
+        <button
+          id="darkmode-btn"
+          class="neon-btn neon-box1 buu"
+          style="padding: 1%"
+          onclick="toggleDarkMode()"
+        >
+          🌙 DARK MODE
+        </button>
+        <button
+          id="fullscreen-btn"
+          class="neon-btn neon-box1 w3-right buu w3-hide-small w3-hide-medium"
+          style="padding: 1%"
+          onclick="toggleFullscreen()"
+        >
+          ⛶ TOÀN MÀN HÌNH
+        </button>
+        <div class="header-panel w3-content">
+          <div id="best-score" class="best-score">
+            🏆 Kỷ lục: <span id="best-score-value">0</span> điểm
+          </div>
+          <div class="header-title w3-center" style="margin-top: 2%">
+            🎮 QUIZ VĨNH LONG
+          </div>
+          <div class="header-sub">Kiến thức – Văn hóa – Lịch sử quê hương</div>
+          <div class="button-group">
+            <button
+              id="home-btn"
+              class="neon-btn neon-box1 buu"
+              onclick="goWeb()"
+            >
+              🏠 VỀ VĨNH LONG
+            </button>
+            <script>
+              function goWeb() {
+                window.location.href =
+                  "https://giabao123123.github.io/VinhLong";
+              }
+            </script>
+            <button
+              id="toggle-rules-btn"
+              class="neon-btn neon-box1 buu"
+              onclick="toggleRules()"
+            >
+              📜 XEM THỂ LỆ
+            </button>
+            <button class="neon-btn neon-box1 buu" onclick="openHistory()">
+              📜 LỊCH SỬ
+            </button>
+          </div>
+        </div>
+        <div class="w3-center">
+          <button
+            id="start-btn"
+            style="font-size: 60px"
+            class="neon-btn neon-box1"
+            onclick="startGame()"
+          >
+            ▶ BẮT ĐẦU CHƠI
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="rules-screen" class="w3-content" style="display: none">
+      <div class="rules-fullscreen">
+        <audio id="music-rules" loop>
+          <source src="./amthanh/sanhcho2.mp3" type="audio/mpeg" />
+        </audio>
+        <div class="rules-controls">
+          <button class="back-btn buu" onclick="backFromRules()">
+            ⬅ TRỞ LẠI
+          </button>
+          <button
+            id="sound-btn-rules"
+            class="neon-btn neon-box1 sound-btn-rules buu"
+            onclick="toggleSound()"
+          >
+            🔊 NHẠC: BẬT
+          </button>
+        </div>
+        <h1>📜 THỂ LỆ</h1>
+        <p>
+          Người chơi sẽ tham gia trả lời các câu hỏi <b>trắc nghiệm</b> về
+          <b>kiến thức – văn hoá – lịch sử Vĩnh Long</b>. Câu hỏi và đáp án được
+          <b>xáo trộn ngẫu nhiên</b> mỗi lần chơi.
+        </p>
+        <ul>
+          <li>Tổng thời gian làm bài: <b>10 phút</b></li>
+          <li>Mỗi câu hỏi có <b>4 đáp án</b>, chỉ <b>1 đáp án đúng</b></li>
+          <li>Trả lời đúng: <b>+10 điểm</b></li>
+          <li>Trả lời sai hoặc bỏ qua: <b>tính 1 câu sai</b></li>
+          <li>Khi hết thời gian, trò chơi sẽ <b>tự động kết thúc</b></li>
+          <li>
+            Kết thúc sẽ hiển thị
+            <b>điểm số, số câu đúng – sai và thời gian làm bài</b>
+          </li>
+          <li>Kết quả được <b>lưu vào lịch sử làm bài</b></li>
+        </ul>
+      </div>
+    </div>
+    <div id="history-screen" class="w3-content" style="display: none">
+      <div class="rules-fullscreen">
+        <audio id="music-history" loop>
+          <source src="./amthanh/sanhcho3.mp3" type="audio/mpeg" />
+        </audio>
+        <div class="rules-controls">
+          <button class="back-btn buu" onclick="backFromHistory()">
+            ⬅ TRỞ LẠI
+          </button>
+          <button
+            id="sound-btn"
+            class="neon-btn neon-box1 sound-btn-history buu"
+            onclick="toggleSound()"
+          >
+            🔊 NHẠC: BẬT
+          </button>
+        </div>
+        <h1>📜 LỊCH SỬ LÀM BÀI</h1>
+        <button
+          class="neon-btn neon-box1 danger buu"
+          style="margin-bottom: 10px"
+          onclick="deleteSelectedHistory()"
+        >
+          🗑 XOÁ ĐÃ CHỌN
+        </button>
+        <div class="w3-margin-bottom">
+          <label class="neon-checkbox">
+            <input
+              type="checkbox"
+              id="check-all-history"
+              onclick="toggleAllHistory(this)"
+            />
+            <span class="checkmark"></span>
+            <span class="label-text"> Chọn tất cả lịch sử </span>
+          </label>
+        </div>
+        <div class="table-scroll">
+          <table class="w3-table w3-bordered w3-centered">
+            <thead>
+              <tr>
+                <th>☑</th>
+                <th>⏰ Thời gian</th>
+                <th>🏆 Điểm</th>
+                <th>✅ Đúng</th>
+                <th>❌ Sai</th>
+                <th>⏱ Thời gian</th>
+              </tr>
+            </thead>
+            <tbody id="history-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="quiz-container w3-content" id="bubu" style="display: none">
+      <div id="loading" class="loading">🎮 Đang tải câu hỏi...</div>
+      <button
+        id="sound-btn"
+        class="neon-btn neon-box2 w3-left buu sound-btn-game w3-hide-medium w3-hide-small"
+        style="left: 25px; position: absolute"
+        onclick="toggleSound()"
+      >
+        🔊NHẠC: BẬT
+      </button>
+      <div class="mobile-hud">
+        <div class="hud-item score">⭐ <span id="hud-score">0</span></div>
+        <div class="hud-item correct">✅ <span id="hud-correct">0</span></div>
+        <div class="hud-item wrong">❌ <span id="hud-wrong">0</span></div>
+      </div>
+      <div id="timer">⏰ Thời gian: 10:00</div>
+      <div id="progress">Câu 1/4</div>
+      <div id="progress-bar-container">
+        <div id="progress-bar"></div>
+      </div>
+      <div id="toast-container">
+        <div id="toast" class="toast"></div>
+      </div>
+      <h2 id="question"></h2>
+      <div id="answers"></div>
+      <button id="skip-btn" class="neon-btn neon-box1" onclick="skipQuestion()">
+        ⏭ Bỏ qua
+      </button>
+      <button
+        id="sound-btn"
+        class="neon-btn neon-box2 w3-left buu sound-btn-game w3-hide-large"
+        onclick="toggleSound()"
+      >
+        🔊<span> NHẠC</span>: BẬT
+      </button>
+      <div class="neon-box2" id="result-box"></div>
+    </div>
+    <script>
+      const SITE_ID = "vinhlong";
+      const DARKMODE_KEY = `${SITE_ID}_darkMode`;
+      const HISTORY_KEY = `${SITE_ID}_quizHistory`;
+      const BEST_SCORE_KEY = `${SITE_ID}_bestScore`;
+      function goHome() {
+        if (typeof finishSound !== "undefined") {
+          finishSound.pause();
+          finishSound.currentTime = 0;
+        }
+        isInGame = false;
+        clearInterval(timer);
+        stopAllMusic();
+        document.getElementById("bubu").style.display = "none";
+        document.getElementById("rules-screen").style.display = "none";
+        document.getElementById("history-screen").style.display = "none";
+        document.getElementById("main-screen").style.display = "block";
+        document.getElementById("chicki").style.display = "block";
+        document.getElementById("start-btn").style.display = "inline-block";
+        document.getElementById("home-btn").style.display = "inline-block";
+        document.getElementById("toggle-rules-btn").style.display =
+          "inline-block";
+        document.getElementById("result-box").style.display = "none";
+        document.getElementById("question").style.display = "block";
+        document.getElementById("answers").style.display = "block";
+        document.getElementById("skip-btn").style.display = "inline-block";
+        document.getElementById("progress").style.display = "block";
+        document.getElementById("progress-bar-container").style.display =
+          "block";
+        document.getElementById("timer").style.display = "block";
+        document.querySelector(".mobile-hud").style.display = "flex";
+        index = 0;
+        score = 0;
+        correctCount = 0;
+        wrongCount = 0;
+        totalTime = GAME_TIME;
+        if (soundEnabled) {
+          lobbyMusic.currentTime = 0;
+          lobbyMusic.volume = 0.4;
+          lobbyMusic.play().catch(() => {});
+        }
+        window.scrollTo(0, 0);
+      }
+      let detailResults = [];
+      document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => {
+          const loading = document.getElementById("loading");
+          if (loading) loading.style.display = "none";
+        }, 1200);
+      });
+      function hideToast() {
+        const toast = document.getElementById("toast");
+        if (!toast) return;
+        toast.className = "toast";
+        toast.innerText = "";
+        if (toastTimer) {
+          clearTimeout(toastTimer);
+          toastTimer = null;
+        }
+      }
+      function toggleDarkMode() {
+        const isDark = document.body.classList.contains("dark");
+        if (isDark) {
+          openLightModeModal();
+        } else {
+          openDarkModeModal();
+        }
+      }
+      function applyDarkMode() {
+        document.body.classList.add("dark");
+        localStorage.setItem(`${SITE_ID}_darkMode`, "on");
+        document.getElementById("darkmode-btn").innerText = "☀ LIGHT MODE";
+      }
+      function applyLightMode() {
+        document.body.classList.remove("dark");
+        localStorage.setItem(`${SITE_ID}_darkMode`, "off");
+        document.getElementById("darkmode-btn").innerText = "🌙 DARK MODE";
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        const saved = localStorage.getItem(`${SITE_ID}_darkMode`);
+        if (saved === "on") {
+          document.body.classList.add("dark");
+          const btn = document.getElementById("darkmode-btn");
+          if (btn) btn.innerText = "☀ LIGHT MODE";
+        }
+        renderHistory();
+      });
+      function loadBestScore() {
+        const best = Number(localStorage.getItem(`${SITE_ID}_bestScore`) || 0);
+        document.getElementById("best-score-value").innerText = best;
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        loadBestScore();
+      });
+      if (
+        !localStorage.getItem(`${SITE_ID}_darkMode`) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ) {
+        document.body.classList.add("dark");
+      }
+      function renderHistory() {
+        const history = JSON.parse(
+          localStorage.getItem(`${SITE_ID}_quizHistory`) || "[]",
+        );
+        const body = document.getElementById("history-body");
+        body.innerHTML = "";
+        if (history.length === 0) {
+          body.innerHTML = `
+                  <tr>
+                    <td colspan="6">Chưa có dữ liệu</td>
+                  </tr>
+                `;
+          return;
+        }
+        history.forEach((h, index) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+<td>
+  <label class="neon-checkbox">
+    <input type="checkbox" class="history-check" data-index="${index}">
+    <span class="checkmark"></span>
+  </label>
+</td>
+<td>
+  <a href="#" onclick="viewHistoryDetail(${index})">
+    ${h.time}
+  </a>
+</td>
+<td>${h.score}</td>
+<td>${h.correct}</td>
+<td>${h.wrong}</td>
+<td>${h.timeUsed}</td>
+`;
+          body.appendChild(tr);
+        });
+      }
+      function toggleRules() {
+        document.getElementById("main-screen").style.display = "none";
+        document.getElementById("bubu").style.display = "none";
+        document.getElementById("rules-screen").style.display = "block";
+        lobbyMusic.pause();
+        if (soundEnabled && musicRules) {
+          musicRules.currentTime = 0;
+          musicRules.volume = 0.4;
+          musicRules.play().catch(() => {});
+        }
+        window.scrollTo(0, 0);
+      }
+      function backFromRules() {
+        document.getElementById("rules-screen").style.display = "none";
+        document.getElementById("main-screen").style.display = "block";
+        musicRules.pause();
+        if (soundEnabled) {
+          lobbyMusic.volume = 0.4;
+          lobbyMusic.play().catch(() => {});
+        }
+        window.scrollTo(0, 0);
+      }
+      const lobbyMusic = document.getElementById("lobbyMusic");
+      const musicRules = document.getElementById("music-rules");
+      const startSound = document.getElementById("startSound");
+      const gameMusic = document.getElementById("gameMusic");
+      const musicHistory = document.getElementById("music-history");
+      const allSounds = [
+        lobbyMusic,
+        musicRules,
+        startSound,
+        gameMusic,
+        musicHistory,
+      ];
+      let soundEnabled = true;
+      function stopAllMusic() {
+        allSounds.forEach((s) => {
+          s.pause();
+          s.currentTime = 0;
+        });
+      }
+      function toggleSound() {
+        soundEnabled = !soundEnabled;
+        allSounds.forEach((sound) => {
+          sound.muted = !soundEnabled;
+        });
+        document.querySelectorAll('[id^="sound-btn"]').forEach((btn) => {
+          btn.innerText = soundEnabled ? "🔊 NHẠC: BẬT" : "🔇 NHẠC: TẮT";
+        });
+        if (!soundEnabled) {
+          stopAllMusic();
+          return;
+        }
+        if (document.getElementById("main-screen").style.display !== "none") {
+          lobbyMusic.volume = 0.4;
+          lobbyMusic.play().catch(() => {});
+        } else if (
+          document.getElementById("rules-screen").style.display !== "none"
+        ) {
+          musicRules.volume = 0.4;
+          musicRules.play().catch(() => {});
+        } else if (document.getElementById("bubu").style.display !== "none") {
+          gameMusic.volume = 0.4;
+          gameMusic.play().catch(() => {});
+        } else if (
+          document.getElementById("history-screen").style.display !== "none"
+        ) {
+          musicHistory.volume = 0.4;
+          musicHistory.play().catch(() => {});
+        }
+      }
+      let isInGame = false;
+      document.addEventListener(
+        "click",
+        () => {
+          if (
+            soundEnabled &&
+            !isInGame &&
+            document.getElementById("main-screen").style.display !== "none"
+          ) {
+            lobbyMusic.currentTime = 0;
+            lobbyMusic.volume = 0.4;
+            lobbyMusic.play().catch(() => {});
+          }
+        },
+        { once: true },
+      );
+      function startTimer() {
+        clearInterval(timer);
+        const timerEl = document.getElementById("timer");
+        timer = setInterval(() => {
+          const now = Date.now();
+          const elapsed = Math.floor((now - startTime) / 1000);
+          totalTime = GAME_TIME - elapsed;
+          if (totalTime <= 0) {
+            clearInterval(timer);
+            timerEl.classList.remove("shake");
+            finishGame();
+            return;
+          }
+          if (totalTime <= 30) {
+            timerEl.classList.add("danger");
+          }
+          const minutes = Math.floor(totalTime / 60);
+          const seconds = totalTime % 60;
+          timerEl.innerText = `⏰ Thời gian: ${minutes}:${
+            seconds < 10 ? "0" : ""
+          }${seconds}`;
+        }, 1000);
+      }
+      function shuffleAnswers(question) {
+        const original = question._origin || question.answers;
+        question._origin = [...original];
+        let arr = original.map((text, index) => ({
+          text,
+          isCorrect: index === question.correct,
+        }));
+        arr.sort(() => Math.random() - 0.5);
+        question.answers = arr.map(
+          (item, i) =>
+            `${String.fromCharCode(65 + i)}) ${item.text.replace(/^[A-D]\)\s*/, "")}`,
+        );
+        question.correct = arr.findIndex((a) => a.isCorrect);
+      }
+      function loadQuestion() {
+        const qc = document.getElementById("bubu");
+        qc.classList.remove("slide-left");
+        void qc.offsetWidth;
+        qc.classList.add("slide-left");
+        const q = quiz[index];
+        shuffleAnswers(q);
+        document.getElementById("progress").innerText = `Câu ${index + 1}/${
+          quiz.length
+        }`;
+        const questionEl = document.getElementById("question");
+        questionEl.classList.remove("question-animate");
+        void questionEl.offsetWidth;
+        questionEl.classList.add("question-animate");
+        document.getElementById("question").innerText = q.question;
+        const answersDiv = document.getElementById("answers");
+        answersDiv.innerHTML = "";
+        q.answers.forEach((ans, i) => {
+          const div = document.createElement("div");
+          div.className = "answer";
+          div.innerText = ans;
+          div.onclick = () => chooseAnswer(i);
+          answersDiv.appendChild(div);
+        });
+        const progressPercent = ((index + 1) / quiz.length) * 100;
+        document.getElementById("progress-bar").style.width =
+          progressPercent + "%";
+      }
+      function chooseAnswer(choice) {
+        const skipBtn = document.getElementById("skip-btn");
+        skipBtn.disabled = true;
+        skipBtn.classList.add("disabled");
+        document.querySelectorAll(".answer").forEach((a) => {
+          a.classList.add("disabled");
+        });
+        recordResult(choice);
+        highlightCorrect(choice);
+        setTimeout(nextQuestion, 800);
+      }
+      function highlightCorrect(choice = null) {
+        const answersDiv = document.querySelectorAll(".answer");
+        const correctIndex = quiz[index].correct;
+        answersDiv.forEach((div, i) => {
+          if (i === correctIndex) div.classList.add("correct");
+          if (choice === i && choice !== correctIndex)
+            div.classList.add("wrong");
+          div.onclick = null;
+        });
+      }
+      function nextQuestion() {
+        index++;
+        if (index >= quiz.length) {
+          finishGame();
+          return;
+        }
+        loadQuestion();
+        const skipBtn = document.getElementById("skip-btn");
+        skipBtn.disabled = false;
+        skipBtn.classList.remove("disabled");
+      }
+      function playFinishSound() {
+        finishSound.play().catch(() => {});
+      }
+      let wrongCount = 0;
+      function finishGame() {
+        clearInterval(timer);
+        playFinishSound();
+        stopAllMusic();
+        document.querySelectorAll('[id^="sound-btn"]').forEach((btn) => {
+          btn.style.display = "none";
+        });
+        document.getElementById("timer").style.display = "none";
+        document.getElementById("progress").style.display = "none";
+        document.getElementById("question").style.display = "none";
+        document.getElementById("answers").style.display = "none";
+        document.getElementById("skip-btn").style.display = "none";
+        document.getElementById("progress-bar-container").style.display =
+          "none";
+        document.querySelector(".mobile-hud").style.display = "none";
+        const resultBox = document.getElementById("result-box");
+        const totalQuestions = quiz.length;
+        const correctPercent = Math.round(
+          (correctCount / totalQuestions) * 100,
+        );
+        const wrongPercent = 100 - correctPercent;
+        let timeUsed = 10 * 60 - totalTime;
+        let minutes = Math.floor(timeUsed / 60);
+        let seconds = timeUsed % 60;
+        let rank, emoji;
+        if (score >= quiz.length * 10 * 0.9) {
+          rank = "Xuất sắc";
+          emoji = "🏆🔥";
+        } else if (score >= quiz.length * 10 * 0.7) {
+          rank = "Rất tốt";
+          emoji = "🌟";
+        } else if (score >= quiz.length * 10 * 0.5) {
+          rank = "Khá";
+          emoji = "👍";
+        } else {
+          rank = "Cần cố gắng";
+          emoji = "💪";
+        }
+        let html = `
+                    <div>
+                        <h2>🎉 KẾT QUẢ CUỐI CÙNG</h2>
+                        <p><b>🏆 Điểm:</b> ${score}</p>
+                        <p><b>✅ Số câu đúng:</b> ${correctCount}</p>
+                        <p><b>❌ Số câu sai:</b> ${wrongCount}</p>
+                        <p><b>📊 Tỷ lệ đúng:</b> ${correctPercent}%</p>
+                        <p><b>📉 Tỷ lệ sai:</b> ${wrongPercent}%</p>
+                        <p><b>⏱ Thời gian suy nghĩ:</b> ${minutes} phút ${seconds} giây</p>
+                        <p><b>🎖 Xếp hạng: ${emoji} ${rank}</b></p>
+                        <hr>
+                      <div class="finish-actions">
+                        <button class="neon-box1 neon-btn" onclick="restartGame()">🔄 Chơi lại</button>
+                        <button class="neon-box1 neon-btn" onclick="goHome()">🏠 Về trang chính</button>
+                        <button class="neon-box1 neon-btn" onclick="shareResult()">📤 Chia sẻ kết quả</button>
+                      </div>
+                    </div>
+                        `;
+        const history = JSON.parse(
+          localStorage.getItem(`${SITE_ID}_quizHistory`) || "[]",
+        );
+        history.unshift({
+          time: getNowTime(),
+          score: score,
+          correct: correctCount,
+          wrong: wrongCount,
+          timeUsed: `${minutes}p ${seconds}s`,
+          details: detailResults,
+        });
+        localStorage.setItem(
+          `${SITE_ID}_quizHistory`,
+          JSON.stringify(history.slice(0, 10)),
+        );
+        resultBox.innerHTML = html;
+        resultBox.style.display = "block";
+        const best = Number(localStorage.getItem(`${SITE_ID}_bestScore`) || 0);
+        if (score > best) {
+          localStorage.setItem(`${SITE_ID}_bestScore`, score);
+          document.getElementById("best-score-value").innerText = score;
+          showToast("🏆 KỶ LỤC MỚI!", "correct");
+        }
+        renderHistory();
+      }
+      let startTime;
+      const GAME_TIME = 10 * 60;
+      function startGame() {
+        const loading = document.getElementById("loading");
+        if (loading) loading.style.display = "flex";
+        isInGame = true;
+        stopAllMusic();
+        detailResults = [];
+        localStorage.removeItem(`${SITE_ID}_skipNoAsk`);
+        setTimeout(() => {
+          if (soundEnabled) {
+            gameMusic.volume = 0.4;
+            gameMusic.play().catch(() => {});
+          }
+        }, 1000);
+        document.getElementById("rules-screen").style.display = "none";
+        document.getElementById("start-btn").style.display = "none";
+        document.getElementById("home-btn").style.display = "none";
+        document.getElementById("toggle-rules-btn").style.display = "none";
+        document.getElementById("chicki").style.display = "none";
+        document.getElementById("main-screen").style.display = "none";
+        document.getElementById("history-screen").style.display = "none";
+        document.getElementById("bubu").style.display = "block";
+        document.getElementById("timer").style.display = "block";
+        document.getElementById("progress").style.display = "block";
+        document.getElementById("question").style.display = "block";
+        document.getElementById("answers").style.display = "block";
+        document.getElementById("progress-bar-container").style.display =
+          "block";
+        totalTime = GAME_TIME;
+        startTime = Date.now();
+        startTimer();
+        loadQuestion();
+        setTimeout(() => {
+          if (loading) loading.style.display = "none";
+        }, 1200);
+      }
+      function pauseFinishSound() {
+        finishSound.pause();
+        finishSound.currentTime = 0;
+      }
+      function restartGame() {
+        pauseFinishSound();
+        stopAllMusic();
+        localStorage.removeItem(`${SITE_ID}_skipNoAsk`);
+        totalTime = GAME_TIME;
+        startTime = Date.now();
+        index = 0;
+        score = 0;
+        correctCount = 0;
+        wrongCount = 0;
+        results = [];
+        detailResults = [];
+        quiz = quiz.sort(() => Math.random() - 0.5);
+        lobbyMusic.pause();
+        lobbyMusic.currentTime = 0;
+        document.getElementById("hud-score").innerText = "0";
+        document.getElementById("hud-correct").innerText = "0";
+        document.getElementById("hud-wrong").innerText = "0";
+        document.querySelector(".mobile-hud").style.display = "flex";
+        document.querySelectorAll('[id^="sound-btn"]').forEach((btn) => {
+          btn.style.display = "inline-block";
+        });
+        const timerEl = document.getElementById("timer");
+        timerEl.classList.remove("shake", "danger");
+        timerEl.innerText = "⏰ Thời gian: 10:00";
+        document.getElementById("result-box").style.display = "none";
+        document.getElementById("skip-btn").style.display = "inline-block";
+        document.getElementById("bubu").style.display = "block";
+        document.getElementById("timer").style.display = "block";
+        document.getElementById("progress").style.display = "block";
+        document.getElementById("question").style.display = "block";
+        document.getElementById("answers").style.display = "block";
+        document.getElementById("progress-bar-container").style.display =
+          "block";
+        document.getElementById("progress-bar").style.width = "0%";
+        clearInterval(timer);
+        startGame();
+        stopAllMusic();
+      }
+      let quiz = [
+        // ===== 1. LỄ HỘI – TÍN NGƯỠNG (8 CÂU) =====
+        {
+          question:
+            "Lễ Sen Dolta là lễ hội truyền thống của dân tộc nào ở Vĩnh Long?",
+          answers: ["Người Kinh", "Người Hoa", "Người Khmer", "Người Chăm"],
+          correct: 2,
+        },
+        {
+          question: "Ý nghĩa chính của Lễ Sen Dolta là gì?",
+          answers: [
+            "Cầu mưa thuận gió hòa",
+            "Cúng tổ tiên, báo hiếu ông bà",
+            "Mừng chiến thắng lịch sử",
+            "Cầu tài lộc buôn bán",
+          ],
+          correct: 1,
+        },
+        {
+          question: "Lễ Chol Chnam Thmay của người Khmer là dịp gì?",
+          answers: [
+            "Lễ cầu mùa",
+            "Tết cổ truyền mừng năm mới",
+            "Lễ hội đua thuyền",
+            "Lễ cúng tổ tiên",
+          ],
+          correct: 1,
+        },
+        {
+          question: "Lễ Chol Chnam Thmay thường kéo dài trong bao nhiêu ngày?",
+          answers: ["1 ngày", "2 ngày", "3 ngày", "5 ngày"],
+          correct: 2,
+        },
+        {
+          question: "Lễ hội Ok Om Bok còn được gọi là lễ gì?",
+          answers: [
+            "Lễ Vu Lan",
+            "Lễ Nghinh Ông",
+            "Lễ Cúng Trăng",
+            "Lễ Sen Dolta",
+          ],
+          correct: 2,
+        },
+        {
+          question: "Hoạt động tiêu biểu nhất trong Lễ hội Ok Om Bok là gì?",
+          answers: [
+            "Múa lân",
+            "Đua ghe ngo truyền thống",
+            "Hát cải lương",
+            "Thả diều",
+          ],
+          correct: 1,
+        },
+        {
+          question: "Lễ cúng biển Mỹ Long còn được gọi là lễ gì?",
+          answers: [
+            "Lễ Vu Lan",
+            "Lễ Nghinh Ông",
+            "Lễ Cúng Trăng",
+            "Lễ Chol Chnam Thmay",
+          ],
+          correct: 1,
+        },
+        {
+          question:
+            "Mong ước chính của người dân trong Lễ cúng biển Mỹ Long là gì?",
+          answers: [
+            "Mưa thuận gió hòa, đánh bắt bội thu",
+            "Gia đình sung túc",
+            "Thi cử đỗ đạt",
+            "Phát triển công nghiệp",
+          ],
+          correct: 0,
+        },
+
+        // ===== 2. VĂN HÓA – CỘNG ĐỒNG (5 CÂU) =====
+        {
+          question: "Ngoài người Kinh, dân tộc nào sinh sống đông ở Vĩnh Long?",
+          answers: ["Người Tày", "Người Hoa", "Người Khmer", "Người Mông"],
+          correct: 2,
+        },
+        {
+          question: "Nét văn hóa đặc trưng nổi bật của Vĩnh Long là gì?",
+          answers: [
+            "Văn hóa núi cao",
+            "Văn hóa sông nước Nam Bộ",
+            "Văn hóa biển đảo",
+            "Văn hóa cao nguyên",
+          ],
+          correct: 1,
+        },
+        {
+          question:
+            "Lễ hội truyền thống có vai trò gì đối với cộng đồng địa phương?",
+          answers: [
+            "Chỉ phục vụ du lịch",
+            "Gắn kết cộng đồng, bảo tồn văn hóa",
+            "Không còn giá trị",
+            "Chỉ mang tính hình thức",
+          ],
+          correct: 1,
+        },
+        {
+          question: "Văn hóa Vĩnh Long gắn liền chặt chẽ với yếu tố nào?",
+          answers: ["Sa mạc", "Biển", "Sông ngòi, kênh rạch", "Núi rừng"],
+          correct: 2,
+        },
+        {
+          question: "Các lễ hội truyền thống góp phần bảo tồn điều gì?",
+          answers: [
+            "Kinh tế công nghiệp",
+            "Bản sắc văn hóa dân tộc",
+            "Hạ tầng giao thông",
+            "Khoa học kỹ thuật",
+          ],
+          correct: 1,
+        },
+
+        // ===== 3. ĐỊA LÝ – TỰ NHIÊN (5 CÂU) =====
+        {
+          question: "Vĩnh Long thuộc khu vực nào của Việt Nam?",
+          answers: [
+            "Đông Nam Bộ",
+            "Tây Nguyên",
+            "Đồng bằng sông Cửu Long",
+            "Duyên hải miền Trung",
+          ],
+          correct: 2,
+        },
+        {
+          question: "Lợi thế lớn về vị trí địa lý của Vĩnh Long là gì?",
+          answers: [
+            "Giáp biển",
+            "Có nhiều núi cao",
+            "Nằm ở trung tâm Đồng bằng sông Cửu Long",
+            "Có nhiều mỏ khoáng sản",
+          ],
+          correct: 2,
+        },
+        {
+          question: "Hệ thống sông ngòi ở Vĩnh Long có vai trò chủ yếu nào?",
+          answers: [
+            "Chỉ phục vụ du lịch",
+            "Phục vụ sản xuất, sinh hoạt và giao thông",
+            "Gây ngập lụt",
+            "Hạn chế phát triển kinh tế",
+          ],
+          correct: 1,
+        },
+        {
+          question: "Khí hậu Vĩnh Long thuận lợi cho hoạt động nào?",
+          answers: [
+            "Khai thác khoáng sản",
+            "Nông nghiệp và du lịch",
+            "Công nghiệp nặng",
+            "Khai thác than",
+          ],
+          correct: 1,
+        },
+        {
+          question: "Thời điểm thích hợp để du lịch Vĩnh Long là khi nào?",
+          answers: [
+            "Tháng 1 – 3",
+            "Tháng 5 – 8",
+            "Tháng 11 đến tháng 4 năm sau",
+            "Chỉ mùa hè",
+          ],
+          correct: 2,
+        },
+
+        // ===== 4. DU LỊCH – ẨM THỰC (6 CÂU) =====
+        {
+          question: "Loại hình du lịch thế mạnh của Vĩnh Long là gì?",
+          answers: [
+            "Du lịch núi",
+            "Du lịch sông nước – miệt vườn",
+            "Du lịch băng tuyết",
+            "Du lịch sa mạc",
+          ],
+          correct: 1,
+        },
+        {
+          question: "Sản phẩm du lịch đặc trưng của Vĩnh Long là gì?",
+          answers: [
+            "Chợ nổi, miệt vườn",
+            "Công viên tuyết",
+            "Khu nghỉ dưỡng núi cao",
+            "Du lịch biển",
+          ],
+          correct: 0,
+        },
+        {
+          question: "Du lịch miệt vườn mang lại trải nghiệm nào cho du khách?",
+          answers: [
+            "Leo núi",
+            "Trải nghiệm cuộc sống sông nước",
+            "Trượt tuyết",
+            "Khám phá sa mạc",
+          ],
+          correct: 1,
+        },
+        {
+          question: "Món ăn đặc trưng của Vĩnh Long được nhắc đến là gì?",
+          answers: [
+            "Phở Hà Nội",
+            "Bún bò Huế",
+            "Lẩu mắm, bánh xèo, cá lóc nướng trui",
+            "Mì Quảng",
+          ],
+          correct: 2,
+        },
+        {
+          question: "Du lịch Vĩnh Long gắn liền với yếu tố nào?",
+          answers: [
+            "Văn hóa công nghiệp",
+            "Văn hóa sông nước",
+            "Văn hóa núi rừng",
+            "Văn hóa biển",
+          ],
+          correct: 1,
+        },
+        {
+          question: "Vĩnh Long đang ưu tiên phát triển mô hình du lịch nào?",
+          answers: [
+            "Du lịch đại trà",
+            "Du lịch xanh – bền vững",
+            "Du lịch quân sự",
+            "Du lịch mạo hiểm",
+          ],
+          correct: 1,
+        },
+
+        // ===== 5. KINH TẾ – PHÁT TRIỂN (6 CÂU) =====
+        {
+          question: "Vĩnh Long mới sau hợp nhất có diện tích khoảng bao nhiêu?",
+          answers: [
+            "Khoảng 3.000 km²",
+            "Khoảng 4.500 km²",
+            "Hơn 6.200 km²",
+            "Trên 10.000 km²",
+          ],
+          correct: 2,
+        },
+        {
+          question: "Dân số Vĩnh Long mới sau hợp nhất ước đạt bao nhiêu?",
+          answers: [
+            "Khoảng 2 triệu người",
+            "Khoảng 2,8 triệu người",
+            "Trên 3,3 triệu người",
+            "Trên 5 triệu người",
+          ],
+          correct: 2,
+        },
+        {
+          question:
+            "Theo dữ liệu 2025, GRDP năm 2024 của Vĩnh Long là bao nhiêu?",
+          answers: [
+            "150.000 tỷ VNĐ",
+            "200.000 tỷ VNĐ",
+            "254.479.941 triệu VNĐ",
+            "500.000 tỷ VNĐ",
+          ],
+          correct: 2,
+        },
+        {
+          question: "Một định hướng phát triển quan trọng của Vĩnh Long là gì?",
+          answers: [
+            "Công nghiệp khai khoáng",
+            "Du lịch và dịch vụ",
+            "Lâm nghiệp",
+            "Khai thác than",
+          ],
+          correct: 1,
+        },
+        {
+          question: "Vĩnh Long chú trọng xây dựng mô hình chính quyền nào?",
+          answers: [
+            "Chính quyền thủ công",
+            "Chính quyền điện tử – chính quyền số",
+            "Chính quyền quân sự",
+            "Chính quyền truyền thống",
+          ],
+          correct: 1,
+        },
+        {
+          question: "Phát triển hạ tầng giúp Vĩnh Long đạt mục tiêu gì?",
+          answers: [
+            "Hạn chế giao thương",
+            "Kết nối vùng Đồng bằng sông Cửu Long",
+            "Thu hẹp đô thị",
+            "Giảm dân số",
+          ],
+          correct: 1,
+        },
+      ];
+
+      let toastTimer = null;
+      quiz = quiz.sort(() => Math.random() - 0.5);
+      let index = 0;
+      let score = 0;
+      let correctCount = 0;
+      let totalTime = 10 * 60; // 10 phút
+      let timer;
+      const correctSound = new Audio("./amthanh/dung.mp3"); // đúng → "Yee!"
+      const wrongSound = new Audio("./amthanh/wrong.mp3"); // sai → "Ô ồ!"
+      const finishSound = new Audio("./amthanh/end.mp3"); // 🔊 âm thanh kết thúc
+      function showToast(message, type) {
+        const toast = document.getElementById("toast");
+        if (toastTimer) {
+          clearTimeout(toastTimer);
+          toastTimer = null;
+        }
+        toast.innerText = message;
+        toast.className = `toast show ${type}`;
+        toastTimer = setTimeout(() => {
+          toast.className = "toast";
+        }, 1200);
+      }
+      function openHistory() {
+        document.getElementById("main-screen").style.display = "none";
+        document.getElementById("rules-screen").style.display = "none";
+        document.getElementById("bubu").style.display = "none";
+        document.getElementById("history-screen").style.display = "block";
+        stopAllMusic();
+        if (soundEnabled) {
+          musicHistory.volume = 0.4;
+          musicHistory.play().catch(() => {});
+        }
+        renderHistory();
+        window.scrollTo(0, 0);
+      }
+      function backFromHistory() {
+        document.getElementById("history-screen").style.display = "none";
+        document.getElementById("main-screen").style.display = "block";
+        stopAllMusic();
+        if (soundEnabled) {
+          lobbyMusic.volume = 0.4;
+          lobbyMusic.play().catch(() => {});
+        }
+        window.scrollTo(0, 0);
+      }
+      function recordResult(choice) {
+        document.getElementById("bubu").classList.add("shake-strong");
+        setTimeout(() => {
+          document.getElementById("bubu").classList.remove("shake-strong");
+        }, 300);
+        const q = quiz[index];
+        const isCorrect = choice === q.correct;
+        detailResults.push({
+          question: q.question,
+          answers: q.answers,
+          correct: q.correct,
+          chosen: choice,
+          isCorrect: isCorrect,
+        });
+        if (isCorrect) {
+          score += 10;
+          correctCount++;
+          correctSound.play();
+          showFloatingScore("+10 ⭐");
+          showToast(
+            "🎉 Tuyệt quá! Bạn thật xuất sắc, có vẻ câu này không làm khó được bạn!",
+            "correct",
+          );
+        } else {
+          wrongCount++;
+          wrongSound.play();
+          showToast("😢 Sai mất rồi! Cố gắng ở câu tiếp theo nhé!", "wrong");
+        }
+        document.getElementById("hud-score").innerText = score;
+        document.getElementById("hud-correct").innerText = correctCount;
+        document.getElementById("hud-wrong").innerText = wrongCount;
+      }
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch((err) => {
+            alert(`Không thể bật toàn màn hình: ${err.message}`);
+          });
+        } else {
+          document.exitFullscreen();
+        }
+      }
+      document.addEventListener("fullscreenchange", () => {
+        const btn = document.getElementById("fullscreen-btn");
+        if (!btn) return;
+        if (document.fullscreenElement) {
+          btn.innerText = "🗗 THOÁT TOÀN MÀN HÌNH";
+        } else {
+          btn.innerText = "⛶ TOÀN MÀN HÌNH";
+        }
+      });
+      function skipQuestion() {
+        const noAsk = localStorage.getItem(`${SITE_ID}_skipNoAsk`);
+        if (noAsk === "true") {
+          doSkip();
+          return;
+        }
+        document.getElementById("skip-modal").style.display = "flex";
+      }
+      function closeSkipModal() {
+        document.getElementById("skip-modal").style.display = "none";
+        document.getElementById("skip-remember").checked = false;
+      }
+      function doSkip() {
+        const skipBtn = document.getElementById("skip-btn");
+        skipBtn.disabled = true;
+        skipBtn.classList.add("disabled");
+        const q = quiz[index];
+        detailResults.push({
+          question: q.question,
+          answers: q.answers,
+          correct: q.correct,
+          chosen: null,
+          isCorrect: false,
+          skipped: true,
+        });
+        wrongCount++;
+        document.getElementById("hud-wrong").innerText = wrongCount;
+        document.querySelectorAll(".answer").forEach((a) => {
+          a.classList.add("disabled");
+          a.onclick = null;
+        });
+        document.querySelectorAll(".answer").forEach((div, i) => {
+          if (i === q.correct) div.classList.add("correct");
+        });
+        showToast(
+          `⏭ Đã bỏ qua! Đáp án đúng là: ${q.answers[q.correct]}`,
+          "wrong",
+        );
+        setTimeout(nextQuestion, 1000);
+      }
+      function confirmSkip() {
+        const remember = document.getElementById("skip-remember").checked;
+        if (remember) {
+          localStorage.setItem(`${SITE_ID}_skipNoAsk`, "true");
+        }
+        closeSkipModal();
+        doSkip();
+      }
+      function showFloatingScore(text) {
+        const el = document.createElement("div");
+        el.className = "floating-score";
+        el.innerText = text;
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 800);
+      }
+      function getNowTime() {
+        const now = new Date();
+        const pad = (n) => (n < 10 ? "0" + n : n);
+        return `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()}
+                      ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+      }
+      let deleteIndexes = [];
+      function deleteSelectedHistory() {
+        const checked = document.querySelectorAll(".history-check:checked");
+        if (checked.length === 0) {
+          alert("⚠ Bạn chưa chọn lịch sử nào để xoá!");
+          return;
+        }
+        deleteIndexes = Array.from(checked)
+          .map((cb) => parseInt(cb.dataset.index))
+          .sort((a, b) => b - a);
+        document.getElementById("delete-history-text").innerHTML = `
+                Bạn có chắc chắn muốn xoá <b>${deleteIndexes.length}</b> mục đã chọn?<br>
+                <b>Hành động này không thể hoàn tác!</b>
+              `;
+        document.getElementById("delete-history-modal").style.display = "flex";
+      }
+      function closeDeleteHistoryModal() {
+        document.getElementById("delete-history-modal").style.display = "none";
+        deleteIndexes = [];
+      }
+      function confirmDeleteHistory() {
+        let history = JSON.parse(
+          localStorage.getItem(`${SITE_ID}_quizHistory`) || "[]",
+        );
+        deleteIndexes.forEach((i) => history.splice(i, 1));
+        localStorage.setItem(`${SITE_ID}_quizHistory`, JSON.stringify(history));
+        renderHistory();
+        closeDeleteHistoryModal();
+        showToast("🗑 Đã xoá lịch sử thành công!", "correct");
+      }
+      function toggleAllHistory(master) {
+        document.querySelectorAll(".history-check").forEach((cb) => {
+          cb.checked = master.checked;
+        });
+      }
+      function openDarkModeModal() {
+        document.getElementById("darkmode-modal").style.display = "flex";
+      }
+      function confirmDarkMode() {
+        hideToast();
+        applyDarkMode();
+        if (document.getElementById("darkmode-remember")?.checked) {
+          localStorage.setItem(`${SITE_ID}_darkmode_skip`, "true");
+        }
+        closeDarkModeModal();
+      }
+      function closeDarkModeModal() {
+        document.getElementById("darkmode-modal").style.display = "none";
+      }
+      function openLightModeModal() {
+        document.getElementById("lightmode-modal").style.display = "flex";
+      }
+      function confirmLightMode() {
+        hideToast();
+        applyLightMode();
+        closeLightModeModal();
+      }
+      function closeLightModeModal() {
+        document.getElementById("lightmode-modal").style.display = "none";
+        const cb = document.getElementById("lightmode-remember");
+        if (cb) cb.checked = false;
+      }
+      function viewHistoryDetail(index) {
+        const history = JSON.parse(
+          localStorage.getItem(`${SITE_ID}_quizHistory`) || "[]",
+        );
+        const h = history[index];
+        if (!h.details) {
+          alert("⚠ Lần chơi này chưa có dữ liệu chi tiết!");
+          return;
+        }
+        let html = "";
+        h.details.forEach((d, i) => {
+          html += `
+<div class="detail-item ${d.isCorrect ? "correct" : "wrong"}">
+  <div><b>Câu ${i + 1}:</b> ${d.question}</div>
+  <div>
+    👉 <b>Bạn chọn:</b>
+    ${
+      d.skipped
+        ? "<span style='color:#ffaa00;font-weight:bold'>⏭ Bỏ qua</span>"
+        : `<span style="font-weight:bold">${d.answers[d.chosen]}</span>`
+    }
+  </div>
+  <div>
+    ✅ <b>Đáp án đúng:</b>
+    <span style="font-weight:bold">${d.answers[d.correct]}</span>
+  </div>
+</div>
+      <hr>
+    `;
+        });
+        document.getElementById("detail-content").innerHTML = html;
+        document.getElementById("detail-modal").style.display = "flex";
+      }
+      function closeDetail() {
+        document.getElementById("detail-modal").style.display = "none";
+      }
+      function shareResult() {
+        const total = quiz.length;
+        const correctPercent = Math.round((correctCount / total) * 100);
+        const wrongPercent = 100 - correctPercent;
+
+        const timeUsed = 10 * 60 - totalTime;
+        const minutes = Math.floor(timeUsed / 60);
+        const seconds = timeUsed % 60;
+
+        let rank, emoji;
+        if (score >= total * 10 * 0.9) {
+          rank = "Xuất sắc";
+          emoji = "🏆🔥";
+        } else if (score >= total * 10 * 0.7) {
+          rank = "Rất tốt";
+          emoji = "🌟";
+        } else if (score >= total * 10 * 0.5) {
+          rank = "Khá";
+          emoji = "👍";
+        } else {
+          rank = "Cần cố gắng";
+          emoji = "💪";
+        }
+
+        const text = `
+🎮 QUIZ VĨNH LONG 🎮
+
+🏆 Điểm: ${score}
+✅ Số câu đúng: ${correctCount}/${total}
+❌ Số câu sai: ${wrongCount}
+📊 Tỷ lệ đúng: ${correctPercent}%
+📉 Tỷ lệ sai: ${wrongPercent}%
+⏱ Thời gian: ${minutes} phút ${seconds} giây
+🎖 Xếp hạng: ${emoji} ${rank}
+
+🔥 Bạn có thể làm tốt hơn không? Thử ngay!
+`;
+
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard
+            .writeText(text.trim())
+            .then(() => {
+              showToast("📋 Đã copy kết quả! Dán để chia sẻ nhé!", "correct");
+            })
+            .catch(() => {
+              fallbackCopy(text);
+            });
+        } else {
+          fallbackCopy(text);
+        }
+      }
+      function fallbackCopy(text) {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        showToast("📋 Đã copy kết quả!", "correct");
+      }
+    </script>
+    <div id="skip-modal" class="modal-overlay" style="display: none">
+      <div class="modal-box neon-box2">
+        <h2>⏭ Bỏ qua câu hỏi?</h2>
+        <p>
+          Bạn sẽ bị tính <b>1 câu sai</b>.<br />
+          Bạn có chắc chắn muốn bỏ qua không?
+        </p>
+        <label class="skip-remember">
+          <input type="checkbox" id="skip-remember" />
+          Lần sau không hỏi nữa
+        </label>
+        <div class="modal-actions">
+          <button class="neon-btn neon-box1 danger" onclick="confirmSkip()">
+            ❌ BỎ QUA
+          </button>
+          <button class="neon-btn neon-box1" onclick="closeSkipModal()">
+            ✅ TIẾP TỤC CHƠI
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="delete-history-modal" class="modal-overlay" style="display: none">
+      <div class="modal-box neon-box2">
+        <h2>🗑 Xác nhận xoá lịch sử</h2>
+        <p id="delete-history-text">
+          Bạn có chắc chắn muốn xoá các mục đã chọn?<br />
+          <b>Hành động này không thể hoàn tác!</b>
+        </p>
+        <div class="modal-actions">
+          <button
+            class="neon-btn neon-box1 danger"
+            onclick="confirmDeleteHistory()"
+          >
+            🗑 XOÁ
+          </button>
+          <button
+            class="neon-btn neon-box1"
+            onclick="closeDeleteHistoryModal()"
+          >
+            ❌ HUỶ
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="darkmode-modal" class="modal-overlay" style="display: none">
+      <div class="modal-box neon-box2">
+        <h2>🌙 Bật Dark Mode?</h2>
+        <p>
+          Giao diện sẽ chuyển sang <b>Dark Mode</b><br />
+          giúp đỡ mỏi mắt khi chơi lâu.
+        </p>
+        <div class="modal-actions">
+          <button class="neon-btn neon-box1" onclick="confirmDarkMode()">
+            🌙 BẬT DARK MODE
+          </button>
+          <button
+            class="neon-btn neon-box1 danger"
+            onclick="closeDarkModeModal()"
+          >
+            ❌ HỦY
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="lightmode-modal" class="modal-overlay" style="display: none">
+      <div class="modal-box neon-box2">
+        <h2>☀ Chuyển sang Light Mode?</h2>
+        <p>
+          Giao diện sẽ trở về <b>Light Mode</b><br />
+          phù hợp khi sử dụng ban ngày.
+        </p>
+        <div class="modal-actions">
+          <button class="neon-btn neon-box1" onclick="confirmLightMode()">
+            ☀ CHUYỂN LIGHT MODE
+          </button>
+          <button
+            class="neon-btn neon-box1 danger"
+            onclick="closeLightModeModal()"
+          >
+            ❌ HUỶ
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="detail-modal" class="modal-overlay" style="display: none">
+      <div class="modal-box detail-box">
+        <h2>📜 Chi tiết lần chơi</h2>
+        <div id="detail-content"></div>
+        <button class="neon-btn neon-box1" onclick="closeDetail()">
+          ❌ Đóng
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
