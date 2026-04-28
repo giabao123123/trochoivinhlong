@@ -627,7 +627,7 @@
         playFinishSound();
         stopAllMusic();
         document.querySelectorAll('[id^="sound-btn"]').forEach((btn) => {
-          btn.style.display = "none";
+          btn.classList.add("sound-btn-hidden");
         });
         document.getElementById("timer").style.display = "none";
         document.getElementById("progress").style.display = "none";
@@ -764,7 +764,7 @@
         document.getElementById("hud-wrong").innerText = "0";
         document.querySelector(".mobile-hud").style.display = "flex";
         document.querySelectorAll('[id^="sound-btn"]').forEach((btn) => {
-          btn.style.display = "inline-block";
+          btn.classList.remove("sound-btn-hidden");
         });
         const timerEl = document.getElementById("timer");
         timerEl.classList.remove("shake", "danger");
