@@ -266,7 +266,12 @@
       <button
         id="sound-btn"
         class="neon-btn neon-box2 w3-left buu sound-btn-game w3-hide-medium w3-hide-small"
-        style="left: 25px; position: absolute"
+        style="
+          left: 25px;
+          position: absolute;
+          background-color: orange;
+          color: white;
+        "
         onclick="toggleSound()"
       >
         🔊NHẠC: BẬT
@@ -626,9 +631,6 @@
         clearInterval(timer);
         playFinishSound();
         stopAllMusic();
-        document.querySelectorAll('[id^="sound-btn"]').forEach((btn) => {
-          btn.classList.add("sound-btn-hidden");
-        });
         document.getElementById("timer").style.display = "none";
         document.getElementById("progress").style.display = "none";
         document.getElementById("question").style.display = "none";
@@ -764,7 +766,7 @@
         document.getElementById("hud-wrong").innerText = "0";
         document.querySelector(".mobile-hud").style.display = "flex";
         document.querySelectorAll('[id^="sound-btn"]').forEach((btn) => {
-          btn.classList.remove("sound-btn-hidden");
+          btn.style.display = "inline-block";
         });
         const timerEl = document.getElementById("timer");
         timerEl.classList.remove("shake", "danger");
